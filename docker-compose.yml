@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  backend:
+    build: ./moodmeal-backend
+    container_name: moodmeal-backend
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./moodmeal-backend/.env
+    networks:
+      - moodmeal-net
+
+  frontend:
+    build: ./moodmeal-frontend
+    container_name: moodmeal-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    networks:
+      - moodmeal-net
+
+networks:
+  moodmeal-net:
+    driver: bridge
