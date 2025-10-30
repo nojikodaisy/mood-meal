@@ -102,7 +102,16 @@ function App() {
           <MoodForm onSubmit={handleSubmit} />
         </div>
 
-        {loading && <div className="mt-8 text-center">Génération en cours...</div>}
+        {loading && (
+          <div className="mt-8 flex flex-col items-center">
+            <div className="flex gap-2">
+              <div className="w-3 h-3 bg-rose-300 rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
+              <div className="w-3 h-3 bg-rose-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+              <div className="w-3 h-3 bg-rose-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+            </div>
+            <p className="mt-4 text-gray-500 text-sm">Génération en cours...</p>
+          </div>
+        )}
         {error && <div className="mt-8 p-6 bg-gray-50 border border-gray-200 rounded text-center">{error}</div>}
 
         {suggestion && (
